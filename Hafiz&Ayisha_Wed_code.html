@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="ta" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikkah & Walima Invitation | K. Mohamed Habish Ali & Dr. S. Kalander Ayisha Safeeka</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel+Decorative:wght@600;700;900&family=Great+Vibes&family=Mukta+Malar:wght@300;400;500;600;700;800&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            800: '#064e3b',
+                            900: '#043e30',
+                            950: '#02261e',
+                        },
+                        gold: {
+                            100: '#fcf8ea',
+                            200: '#f7edcb',
+                            300: '#eeda95',
+                            400: '#dfbc53',
+                            500: '#c89d2d',
+                            600: '#a77c1d',
+                        },
+                        pearl: '#faf7f2',
+                        creme: '#f4ede2',
+                    },
+                    fontFamily: {
+                        amiri: ['"Amiri"', 'serif'],
+                        cinzel: ['"Cinzel Decorative"', 'serif'],
+                        cursive: ['"Great Vibes"', 'cursive'],
+                        tamil: ['"Mukta Malar"', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fff3c4 0%, #e8c15a 35%, #b58826 70%, #fbe89d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .emerald-glass {
+            background: rgba(4, 62, 48, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(223, 188, 83, 0.3);
+        }
+        .card-ivory {
+            background: rgba(255, 253, 248, 0.95);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(200, 157, 45, 0.28);
+            box-shadow: 0 15px 35px -5px rgba(2, 38, 30, 0.08), 0 0 1px 1px rgba(200, 157, 45, 0.2);
+        }
+        #sparkle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 35;
+        }
+        .bg-islamic-pattern {
+            background-color: #02261e;
+            background-image: radial-gradient(rgba(223, 188, 83, 0.15) 1px, transparent 1px), radial-gradient(rgba(223, 188, 83, 0.08) 1px, #02261e 1px);
+            background-size: 36px 36px;
+            background-position: 0 0, 18px 18px;
+        }
+    </style>
+</head>
+<body class="bg-creme text-neutral-800 font-sans antialiased overflow-x-hidden selection:bg-gold-300 selection:text-emerald-950">
+
+    <!-- Ambient Sparkles & Jasmine Petals Canvas -->
+    <canvas id="sparkle-canvas"></canvas>
+
+    <!-- Top Floating Actions (Language Switcher & Audio Ambient) -->
+    <header class="fixed top-4 inset-x-0 z-50 px-4 pointer-events-none">
+        <div class="max-w-5xl mx-auto flex items-center justify-between pointer-events-auto">
+            <!-- Language Toggle Switcher -->
+            <button type="button" onclick="toggleLanguage()" class="flex items-center gap-2 bg-emerald-950/90 hover:bg-emerald-900 border border-gold-400 text-gold-200 px-3.5 py-2 rounded-full shadow-2xl backdrop-blur-md transition-transform transform active:scale-95 group text-xs sm:text-sm font-semibold cursor-pointer">
+                <i class="fa-solid fa-language text-gold-300 text-base"></i>
+                <span id="langButtonLabel">Switch to English</span>
+            </button>
+
+            <!-- Audio Ambient Synthesizer -->
+            <button id="audioToggleBtn" type="button" onclick="toggleAudio()" class="flex items-center gap-2 bg-emerald-950/90 hover:bg-emerald-900 border border-gold-400 text-gold-200 px-3.5 py-2 rounded-full shadow-2xl backdrop-blur-md transition-transform transform active:scale-95 text-xs sm:text-sm font-semibold cursor-pointer">
+                <span id="audioPing" class="relative flex h-2.5 w-2.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75 hidden" id="pingWave"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-gold-400"></span>
+                </span>
+                <i class="fa-solid fa-music text-gold-400"></i>
+                <span id="audioStatusText">இசை (BGM)</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 emerald-glass text-gold-100 px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-gold-400/60 text-xs sm:text-sm">
+        <i class="fa-solid fa-circle-check text-gold-400 text-base"></i>
+        <span id="toastMsg">Action Successful!</span>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen bg-islamic-pattern flex flex-col items-center justify-center text-center px-4 pt-24 pb-20 text-gold-100 overflow-hidden">
+        <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+            <svg class="w-[700px] h-[700px] animate-[spin_180s_linear_infinite]" viewBox="0 0 200 200">
+                <circle cx="100" cy="100" r="90" fill="none" stroke="#dfbc53" stroke-width="1" stroke-dasharray="3,3"/>
+                <polygon points="100,10 120,80 190,100 120,120 100,190 80,120 10,100 80,80" fill="none" stroke="#dfbc53" stroke-width="1"/>
+                <polygon points="100,25 115,85 175,100 115,115 100,175 85,115 25,100 85,85" fill="none" stroke="#dfbc53" stroke-width="0.7"/>
+                <circle cx="100" cy="100" r="45" fill="none" stroke="#dfbc53" stroke-width="1.5"/>
+            </svg>
+        </div>
+
+        <div class="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+            <!-- Bismillah Badge -->
+            <div class="mb-5 px-6 py-2 rounded-full border border-gold-400/50 bg-emerald-900/60 backdrop-blur-md shadow-xl flex items-center gap-2">
+                <span class="font-amiri text-lg sm:text-2xl text-gold-300 font-bold tracking-wide">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+            </div>
+
+            <!-- Invocations -->
+            <p class="font-amiri italic text-sm sm:text-base text-gold-200/90 mb-1" data-key="bismillah_trans">
+                பிஸ்மில்லா ஹிர்ரஹ்மானிர் ரஹீம்
+            </p>
+            <p class="font-tamil text-xs sm:text-sm text-gold-300/80 mb-6" data-key="duaa_invocation">
+                அளவற்ற அருளாளனும், நிகரற்ற அன்புடையோனுமாகிய எல்லாம் வல்ல அல்லாஹ்வின் திருப்பெயரால்...
+            </p>
+
+            <!-- Monogram Seal "HA" -->
+            <div class="relative my-3 flex items-center justify-center">
+                <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-2 border-gold-400 p-1.5 shadow-[0_0_25px_rgba(223,188,83,0.3)] bg-gradient-to-b from-emerald-900 to-emerald-950 flex items-center justify-center">
+                    <div class="w-full h-full rounded-full border border-dashed border-gold-300 flex flex-col items-center justify-center px-2">
+                        <span style="font-family: 'Pinyon Script', cursive; text-shadow: 0 0 8px rgba(250, 217, 128, 0.4);" 
+                            class="text-2xl sm:text-3xl text-gold-300 font-normal leading-tight tracking-normal select-none pt-1">
+                            H &amp; A
+                        </span>
+                        <span class="text-[8px] sm:text-[9px] tracking-[0.2em] uppercase text-gold-400 font-serif mt-0.5">17.01.2027</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Occasion Title -->
+            <div class="mt-4 mb-2">
+                <span class="text-xs uppercase tracking-[0.3em] font-serif text-gold-400 font-bold block mb-1" data-key="invitation_badge">
+                    நிக்காஹ் மற்றும் வலிமா அழைப்பிதழ்
+                </span>
+                <h2 class="font-tamil text-xl sm:text-2xl text-gold-200 font-semibold" data-key="tamil_main_heading">
+                    நிக்காஹ் மற்றும் வலிமா அழைப்பிதழ்
+                </h2>
+            </div>
+
+            <p class="text-xs sm:text-sm text-gold-100/80 max-w-xl mx-auto my-3 font-serif" data-key="solicit_text">
+                அல்லாஹ்வின் பேரருளாலும், நபிகள் நாயகம் ஸல் அவர்களின் துஆ பரக்கத்தாலும் நடைபெறும் திருமண அழைப்பு
+            </p>
+
+            <!-- Couple Names -->
+            <div class="my-5 space-y-3 w-full">
+                <div>
+                    <h1 class="font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold gold-gradient-text tracking-wide" data-key="groom_name">
+                        கா. முகமது ஹாபிஸ் அலி <span class="text-base sm:text-xl font-tamil text-gold-300 font-normal">B.E., (ECE)</span>
+                    </h1>
+                </div>
+
+                <div class="py-2.5 flex items-center justify-center gap-3 w-full max-w-xs mx-auto">
+                    <span class="h-[1px] flex-1 bg-gradient-to-r from-transparent via-gold-400/50 to-gold-400"></span>
+                    <span class="text-xl sm:text-2xl italic font-serif font-semibold text-gold-300 tracking-widest lowercase px-2 select-none">
+                        weds
+                    </span>
+                    <span class="h-[1px] flex-1 bg-gradient-to-l from-transparent via-gold-400/50 to-gold-400"></span>
+                </div>
+
+                <div>
+                    <h1 class="font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold gold-gradient-text tracking-wide" data-key="bride_name">
+                        Dr. ச. கலந்தர் ஆயிஷா சஃபீக்கா <span class="text-base sm:text-xl font-tamil text-gold-300 font-normal">B.H.M.S.</span>
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Date, Hijri & Venue Highlights -->
+            <div class="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm text-gold-200">
+                <span class="bg-emerald-900/80 border border-gold-400/50 px-3.5 py-1.5 rounded-full flex items-center gap-2">
+                    <i class="fa-solid fa-calendar-day text-gold-400"></i>
+                    <strong data-key="wedding_date">ஞாயிற்றுக்கிழமை, 17 ஜனவரி 2027</strong>
+                </span>
+                <span class="bg-emerald-900/80 border border-gold-400/50 px-3.5 py-1.5 rounded-full flex items-center gap-2">
+                    <i class="fa-solid fa-moon text-gold-400"></i>
+                    <span data-key="hijri_date">ஹிஜ்ரி 1448, ஷாஃபான் மாதம் பிறை 08</span>
+                </span>
+                <span class="bg-emerald-900/80 border border-gold-400/50 px-3.5 py-1.5 rounded-full flex items-center gap-2">
+                    <i class="fa-solid fa-map-location-dot text-gold-400"></i>
+                    <span data-key="quick_venue">திண்டுக்கல், தமிழ்நாடு</span>
+                </span>
+            </div>
+
+            <!-- LIVE COUNTDOWN TIMER -->
+            <div class="mt-8 w-full max-w-xl">
+                <div class="grid grid-cols-4 gap-2 sm:gap-4 text-center">
+                    <div class="bg-emerald-900/90 border border-gold-400/40 p-3 sm:p-4 rounded-2xl shadow-xl">
+                        <span id="days" class="text-2xl sm:text-4xl font-bold font-serif text-gold-300">00</span>
+                        <span class="block text-[10px] sm:text-xs tracking-wider uppercase text-gold-200/80 mt-1" data-key="cd_days">நாட்கள்</span>
+                    </div>
+                    <div class="bg-emerald-900/90 border border-gold-400/40 p-3 sm:p-4 rounded-2xl shadow-xl">
+                        <span id="hours" class="text-2xl sm:text-4xl font-bold font-serif text-gold-300">00</span>
+                        <span class="block text-[10px] sm:text-xs tracking-wider uppercase text-gold-200/80 mt-1" data-key="cd_hours">மணி</span>
+                    </div>
+                    <div class="bg-emerald-900/90 border border-gold-400/40 p-3 sm:p-4 rounded-2xl shadow-xl">
+                        <span id="minutes" class="text-2xl sm:text-4xl font-bold font-serif text-gold-300">00</span>
+                        <span class="block text-[10px] sm:text-xs tracking-wider uppercase text-gold-200/80 mt-1" data-key="cd_mins">நிமிடம்</span>
+                    </div>
+                    <div class="bg-emerald-900/90 border border-gold-400/40 p-3 sm:p-4 rounded-2xl shadow-xl">
+                        <span id="seconds" class="text-2xl sm:text-4xl font-bold font-serif text-gold-300">00</span>
+                        <span class="block text-[10px] sm:text-xs tracking-wider uppercase text-gold-200/80 mt-1" data-key="cd_secs">விநாடி</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Action Buttons -->
+            <div class="mt-10 flex flex-wrap justify-center gap-3">
+                <a href="#events" class="bg-gradient-to-r from-gold-500 to-gold-400 hover:from-gold-400 hover:to-gold-300 text-emerald-950 font-bold px-6 py-3 rounded-full text-xs sm:text-sm uppercase tracking-wider shadow-lg flex items-center gap-2 transition-transform transform active:scale-95">
+                    <i class="fa-solid fa-clock"></i> <span data-key="btn_schedule">நிகழ்ச்சி நேரம்</span>
+                </a>
+                <a href="https://www.google.com/maps/place/Sathangudi+Saanar+Marriage+Hall/@10.3570452,77.9674917,17z" target="_blank" rel="noopener noreferrer" class="emerald-glass hover:bg-emerald-800 text-gold-200 font-semibold px-6 py-3 rounded-full text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2 transition-transform transform active:scale-95">
+                    <i class="fa-solid fa-location-dot text-gold-400"></i> <span data-key="btn_location">மண்டப முகவரி</span>
+                </a>
+                <button type="button" onclick="shareOnWhatsApp()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-full text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2 transition-transform transform active:scale-95 shadow-md cursor-pointer">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> <span data-key="btn_share">அழைப்பை பகிர்க</span>
+                </button>
+                <a href="#dua-wall" class="border border-gold-400/60 bg-emerald-950/70 hover:bg-gold-500/20 text-gold-200 font-semibold px-6 py-3 rounded-full text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2 transition-transform transform active:scale-95">
+                    <i class="fa-solid fa-hands-praying text-gold-400"></i> <span data-key="btn_dua">துஆ &amp; நல்வாழ்த்து</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- QURANIC BLESSING / SURAH AR-RUM -->
+    <section class="py-14 px-4 bg-pearl border-y border-gold-300/50">
+        <div class="max-w-4xl mx-auto text-center card-ivory p-8 sm:p-10 rounded-3xl relative">
+            <div class="w-12 h-12 mx-auto rounded-full bg-emerald-950 text-gold-300 flex items-center justify-center -mt-14 mb-4 border-2 border-gold-400 shadow-md">
+                <i class="fa-solid fa-book-quran text-lg"></i>
+            </div>
+            
+            <p class="font-amiri text-lg sm:text-2xl text-emerald-950 leading-loose font-bold mb-4" dir="rtl">
+                وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+            </p>
+
+            <p class="font-tamil text-xs sm:text-sm text-emerald-900 font-medium mt-3" data-key="ayah_tamil">
+                அல்லாஹ்வும் சல்லி அலா முஹம்மதின் வஆலிஹி வசல்லம் நிறைவான வாழ்வை தந்து நிலையாக வாழ வைக்கும் மறையளித்த எங்கள் இறைவா! இம்மணமக்களை மகிழ்வோடும் நிறைவாக வாழ வைப்பாயாக! - ஆமீன்.
+            </p>
+            <p class="text-xs sm:text-sm text-neutral-700 italic max-w-2xl mx-auto leading-relaxed font-serif mt-2" data-key="ayah_english">
+                "And of His signs is that He created for you from yourselves mates that you may find tranquillity in them; and He placed between you affection and mercy. Indeed in that are signs for a people who give thought."
+            </p>
+            <span class="inline-block mt-3 text-xs uppercase font-bold tracking-widest text-gold-600 font-serif">
+                Surah Ar-Rum [30:21]
+            </span>
+        </div>
+    </section>
+
+    <!-- FAMILY LINEAGE & PARENTAGE -->
+    <section class="py-20 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-gold-600 font-semibold uppercase tracking-widest text-xs" data-key="lineage_subtitle">பாரம்பரிய நற்குடும்ப விபரம்</span>
+            <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-emerald-950 mt-1" data-key="lineage_title">மணமக்கள் மற்றும் குடும்ப விபரங்கள்</h2>
+            <div class="w-20 h-1 bg-gold-400 mx-auto mt-3 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+            <!-- GROOM'S SIDE -->
+            <div class="card-ivory rounded-3xl p-6 sm:p-8 flex flex-col justify-between border-t-4 border-t-emerald-800 relative hover:shadow-2xl transition-all">
+                <div class="flex items-center gap-3 mb-4 pb-3 border-b border-gold-200">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-900 text-gold-300 flex items-center justify-center text-xl font-cinzel font-bold">
+                        H
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-gold-600" data-key="groom_label">தீன்குலச்செல்வன் • மணமகன்</span>
+                        <h3 class="font-cinzel text-lg sm:text-xl font-bold text-emerald-950" data-key="groom_card_name">கா. முகமது ஹாபிஸ் அலி B.E., (ECE)</h3>
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-xs sm:text-sm text-neutral-700 leading-relaxed" id="groomLineageBlock">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-gold-200 flex items-center justify-between">
+                    <div>
+                        <span class="text-[11px] text-neutral-500 uppercase block font-semibold" data-key="groom_parents_heading">பெற்றோர்</span>
+                        <strong class="text-emerald-950 text-xs sm:text-sm" data-key="groom_parents_names">ஜனாப். M.A. காதர் மைதீன் - ஜனாபா. K. நர்கீஸ் பானு (மதுரை)</strong>
+                    </div>
+                    <a href="tel:8270820193" class="bg-emerald-900 text-gold-200 hover:bg-emerald-800 px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                        <i class="fa-solid fa-phone"></i> Call
+                    </a>
+                </div>
+            </div>
+
+            <!-- BRIDE'S SIDE -->
+            <div class="card-ivory rounded-3xl p-6 sm:p-8 flex flex-col justify-between border-t-4 border-t-gold-500 relative hover:shadow-2xl transition-all">
+                <div class="flex items-center gap-3 mb-4 pb-3 border-b border-gold-200">
+                    <div class="w-12 h-12 rounded-2xl bg-gold-500 text-emerald-950 flex items-center justify-center text-xl font-cinzel font-bold">
+                        A
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-gold-600" data-key="bride_label">தீன்குலச்செல்வி • மணமகள்</span>
+                        <h3 class="font-cinzel text-lg sm:text-xl font-bold text-emerald-950" data-key="bride_card_name">Dr. ச. கலந்தர் ஆயிஷா சஃபீக்கா B.H.M.S.</h3>
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-xs sm:text-sm text-neutral-700 leading-relaxed" id="brideLineageBlock">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-gold-200 flex items-center justify-between">
+                    <div>
+                        <span class="text-[11px] text-neutral-500 uppercase block font-semibold" data-key="bride_parents_heading">பெற்றோர்</span>
+                        <strong class="text-emerald-950 text-xs sm:text-sm" data-key="bride_parents_names">ஹாஜி. டாக்டர் ஹெச். முகமது காசிம் M.Sc., Ph.D., D.Sc., - M. இர்பானா ஃபர்வீன் (திண்டுக்கல்)</strong>
+                    </div>
+                    <div class="flex gap-1.5">
+                        <a href="tel:9003040778" class="bg-emerald-900 text-gold-200 hover:bg-emerald-800 px-2.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-1 transition-colors">
+                            <i class="fa-solid fa-phone"></i> 1
+                        </a>
+                        <a href="tel:7558123457" class="bg-emerald-900 text-gold-200 hover:bg-emerald-800 px-2.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-1 transition-colors">
+                            <i class="fa-solid fa-phone"></i> 2
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEREMONY SCHEDULE & FEAST -->
+    <section id="events" class="py-20 bg-pearl border-t border-gold-200">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-14">
+                <span class="text-gold-600 font-semibold uppercase tracking-widest text-xs" data-key="program_subtitle">சுபவேளைகள்</span>
+                <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-emerald-950 mt-1" data-key="program_title">நிகழ்ச்சி நிரல் மற்றும் வலிமா விருந்து</h2>
+                <div class="w-20 h-1 bg-gold-400 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="space-y-6">
+                <!-- NIKKAH CEREMONY -->
+                <div class="card-ivory p-6 sm:p-8 rounded-3xl border-l-8 border-l-emerald-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-md hover:shadow-xl transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-900 text-gold-300 flex-shrink-0 flex items-center justify-center text-2xl border border-gold-400">
+                            <i class="fa-solid fa-ring"></i>
+                        </div>
+                        <div>
+                            <span class="inline-block bg-emerald-100 text-emerald-900 font-bold text-xs px-3 py-1 rounded-full mb-1" data-key="nikkah_badge">
+                                இன்ஷா அல்லாஹ் நிக்காஹ்
+                            </span>
+                            <h3 class="font-serif text-xl sm:text-2xl font-bold text-emerald-950" data-key="nikkah_name">முபாரக்கான நிக்காஹ் வைபவம்</h3>
+                            <p class="text-gold-600 font-bold text-sm mt-1" data-key="nikkah_time">
+                                17 ஜனவரி 2027 • காலை 11.00 மணிக்குமேல் 12.30 மணிக்குள்
+                            </p>
+                            <p class="text-neutral-600 text-xs sm:text-sm mt-2 max-w-md" data-key="nikkah_desc">
+                                பெரியோர்களால் நிச்சயிக்கப்பட்டு குர்ஆன் மற்றும் சுன்னத் முறைப்படி நிக்காஹ் திருநிறைவு பெறும்.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WALIMA FEAST -->
+                <div class="card-ivory p-6 sm:p-8 rounded-3xl border-l-8 border-l-gold-500 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-md hover:shadow-xl transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gold-500 text-emerald-950 flex-shrink-0 flex items-center justify-center text-2xl border border-gold-600">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <div>
+                            <span class="inline-block bg-gold-100 text-emerald-950 font-bold text-xs px-3 py-1 rounded-full mb-1" data-key="walima_badge">
+                                சுவையான வலிமா விருந்து
+                            </span>
+                            <h3 class="font-serif text-xl sm:text-2xl font-bold text-emerald-950" data-key="walima_name">வலிமா விருந்து உபசரிப்பு</h3>
+                            <p class="text-gold-600 font-bold text-sm mt-1" data-key="walima_time">
+                                17 ஜனவரி 2027 • மதியம் 12.45 மணி முதல்
+                            </p>
+                            <p class="text-neutral-600 text-xs sm:text-sm mt-2 max-w-md" data-key="walima_desc">
+                                தாங்கள் தங்கள் சுற்றமும் நட்பும் சூழ வருகை தந்து மணமக்களை ஹக்கில் துஆ செய்து வலிமா விருந்திலும் கலந்து கொள்ளுமாறு அன்புடன் அழைக்கின்றோம்.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VENUE & LOCATION -->
+    <section id="venue" class="py-20 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-14">
+            <span class="text-gold-600 font-semibold uppercase tracking-widest text-xs" data-key="venue_subtitle">திருமண மண்டபம்</span>
+            <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-emerald-950 mt-1" data-key="venue_title">மண்டப அமைவிடம் மற்றும் வழிகாட்டி</h2>
+            <div class="w-20 h-1 bg-gold-400 mx-auto mt-3 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-6 card-ivory p-6 sm:p-8 rounded-3xl space-y-4">
+                <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold-600 bg-gold-100 px-3 py-1 rounded-full">
+                    <i class="fa-solid fa-mosque"></i> Meeting Hall &amp; Landmark
+                </div>
+                
+                <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-emerald-950" data-key="hall_name">
+                    சாத்தங்குடி சத்ரிய நாடார்கள் உறவின் முறை மீட்டிங் ஹால்
+                </h3>
+                
+                <p class="font-tamil text-sm text-neutral-600" data-key="hall_tamil_name">
+                    யானைத்தெப்பம், திண்டுக்கல்
+                </p>
+
+                <div class="p-4 rounded-2xl bg-creme border border-gold-200 space-y-2 text-xs sm:text-sm text-neutral-700">
+                    <p class="flex items-start gap-2.5">
+                        <i class="fa-solid fa-map-pin text-emerald-900 mt-1"></i>
+                        <span data-key="hall_landmark">Opp. Begampur Big Mosque, Near Yanaitheppam, Dindigul, Tamil Nadu.</span>
+                    </p>
+                    <p class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-compass text-emerald-900"></i>
+                        <span data-key="hall_guide">திண்டுக்கல் - பேகம்பூர் பெரிய பள்ளிவாசல் எதிரில், யானைத்தெப்பம் அருகில்.</span>
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-3 pt-2">
+                    <button type="button" onclick="copyAddress()" class="flex-1 bg-creme hover:bg-gold-100 border border-gold-400 text-emerald-950 font-semibold px-4 py-2.5 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors cursor-pointer">
+                        <i class="fa-regular fa-copy"></i> <span data-key="btn_copy_addr">முகவரி நகலெடு</span>
+                    </button>
+                    <a href="https://www.google.com/maps/place/Sathangudi+Saanar+Marriage+Hall/@10.3570452,77.9674917,17z" target="_blank" rel="noopener noreferrer" class="flex-1 bg-emerald-900 hover:bg-emerald-800 text-gold-200 font-semibold px-4 py-2.5 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors shadow">
+                        <i class="fa-solid fa-location-arrow"></i> Google Maps
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 card-ivory p-6 sm:p-8 rounded-3xl text-center flex flex-col items-center justify-center relative overflow-hidden">
+                <span class="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-2" data-key="qr_header">
+                    வழிகாட்டி மேப் QR குறியீடு
+                </span>
+                
+                <a href="https://www.google.com/maps/place/Sathangudi+Saanar+Marriage+Hall/@10.3570452,77.9674917,17z" target="_blank" rel="noopener noreferrer" class="p-4 bg-white rounded-2xl border-2 border-gold-400/60 shadow-lg my-2 inline-block hover:scale-105 transition-transform" title="Click to open Google Maps">
+                    <svg class="w-40 h-40 sm:w-44 sm:h-44 text-emerald-950" viewBox="0 0 100 100" fill="currentColor">
+                        <rect x="5" y="5" width="26" height="26" fill="none" stroke="currentColor" stroke-width="4"/>
+                        <rect x="11" y="11" width="14" height="14"/>
+                        <rect x="69" y="5" width="26" height="26" fill="none" stroke="currentColor" stroke-width="4"/>
+                        <rect x="75" y="11" width="14" height="14"/>
+                        <rect x="5" y="69" width="26" height="26" fill="none" stroke="currentColor" stroke-width="4"/>
+                        <rect x="11" y="75" width="14" height="14"/>
+                        <rect x="36" y="8" width="5" height="5"/>
+                        <rect x="45" y="8" width="5" height="12"/>
+                        <rect x="55" y="8" width="8" height="5"/>
+                        <rect x="8" y="36" width="5" height="8"/>
+                        <rect x="18" y="42" width="6" height="6"/>
+                        <rect x="28" y="36" width="5" height="5"/>
+                        <rect x="38" y="30" width="8" height="8"/>
+                        <rect x="50" y="24" width="6" height="6"/>
+                        <rect x="60" y="32" width="6" height="12"/>
+                        <rect x="72" y="36" width="10" height="5"/>
+                        <rect x="88" y="42" width="5" height="10"/>
+                        <rect x="38" y="44" width="16" height="16" fill="#c89d2d"/>
+                        <rect x="42" y="48" width="8" height="8" fill="#02261e"/>
+                        <rect x="6" y="56" width="18" height="5"/>
+                        <rect x="28" y="64" width="5" height="12"/>
+                        <rect x="36" y="68" width="12" height="6"/>
+                        <rect x="52" y="62" width="6" height="6"/>
+                        <rect x="62" y="68" width="14" height="6"/>
+                        <rect x="80" y="60" width="12" height="6"/>
+                        <rect x="80" y="74" width="6" height="18"/>
+                        <rect x="68" y="86" width="8" height="6"/>
+                        <rect x="52" y="80" width="10" height="5"/>
+                        <rect x="38" y="84" width="8" height="8"/>
+                    </svg>
+                </a>
+                
+                <p class="text-xs text-neutral-600 mt-2 font-medium" data-key="qr_subtext">
+                    பேகம்பூர் பெரிய பள்ளிவாசல் எதிரில், திண்டுக்கல்
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE DUA & BLESSINGS WALL -->
+    <section id="dua-wall" class="py-20 bg-pearl border-t border-gold-200">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-gold-600 font-semibold uppercase tracking-widest text-xs" data-key="dua_subtitle">உங்கள் பிரார்த்தனைகள்</span>
+                <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-emerald-950 mt-1" data-key="dua_title">துஆ மற்றும் நல்வாழ்த்துப் பதிவுகள்</h2>
+                <div class="w-20 h-1 bg-gold-400 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-5 card-ivory p-6 sm:p-8 rounded-3xl">
+                    <h3 class="font-serif text-lg sm:text-xl font-bold text-emerald-950 mb-2" data-key="form_heading">
+                        மணமக்களுக்கு துஆ செய்யுங்கள்
+                    </h3>
+                    <p class="text-xs text-neutral-500 mb-6" data-key="form_subheading">
+                        ஹாபிஸ் அலி &amp; டாக்டர் ஆயிஷா சஃபீக்கா ஆகியோருக்கு உங்கள் ஆசீர்வாதங்களை பதிவிடவும்
+                    </p>
+
+                    <form id="duaForm" onsubmit="handleDuaSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1" data-key="form_name_label">உங்கள் பெயர் *</label>
+                            <input type="text" id="senderName" required placeholder="Ex. Mohamed & Family" class="w-full bg-white border border-gold-300 rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-gold-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1" data-key="form_city_label">ஊர்</label>
+                            <input type="text" id="senderCity" placeholder="Ex. Madurai / Chennai / Dindigul" class="w-full bg-white border border-gold-300 rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-gold-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1" data-key="form_dua_label">துஆ செய்தி *</label>
+                            <textarea id="senderMsg" rows="3" required placeholder="பாரக்கல்லாஹு லகுமா வபாரக்க அலைகுமா... May Allah bless your union with endless peace!" class="w-full bg-white border border-gold-300 rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-gold-500"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-emerald-900 hover:bg-emerald-800 text-gold-200 font-bold py-3 rounded-xl transition-all shadow text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="fa-solid fa-paper-plane text-gold-400"></i> <span data-key="btn_submit_dua">துஆவை சமர்ப்பிக்கவும்</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="lg:col-span-7 flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-serif font-bold text-emerald-950 text-base sm:text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-comments text-gold-500"></i> <span data-key="feed_heading">பதிவான துஆக்கள்</span>
+                        </span>
+                        <span id="duaCounterBadge" class="text-xs bg-gold-200 text-emerald-950 px-3 py-1 rounded-full font-bold">
+                            0 Duas
+                        </span>
+                    </div>
+
+                    <div id="duasFeed" class="space-y-3.5 max-h-[460px] overflow-y-auto pr-2">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-emerald-950 text-gold-200/80 py-12 px-4 text-center border-t border-gold-400/30">
+        <div class="max-w-3xl mx-auto flex flex-col items-center">
+            <h3 style="font-family: 'Cinzel Decorative', serif;" 
+                class="text-xl sm:text-2xl md:text-3xl font-bold text-gold-300 tracking-wide text-center my-2 select-none leading-snug">
+                K. Mohamed Habish Ali 
+                <span class="text-gold-400 font-normal italic mx-1.5">&amp;</span> 
+                Dr. S. Kalander Ayisha Safeeka
+            </h3>
+
+            <p class="font-amiri text-sm sm:text-base text-gold-200/90 my-2">
+                بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ
+            </p>
+            <p class="text-xs text-gold-400/80 font-serif italic mb-6">
+                "May Allah bless you and shower His blessings upon you and bring you together in goodness."
+            </p>
+            <div class="text-[11px] text-neutral-400 border-t border-gold-400/20 pt-4 w-full flex flex-col sm:flex-row items-center justify-between">
+                <span>Insha Allah Nikkah: 17th January 2027</span>
+                <span class="mt-2 sm:mt-0">Dindigul &amp; Madurai Families</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        /* -------------------------------------------------------------
+           1. TRANSLATION DATA & LOGIC
+           ------------------------------------------------------------- */
+        let currentLang = 'ta';
+
+        const translations = {
+            en: {
+                langButtonLabel: "தமிழ் வடிவத்திற்கு மாறுக",
+                bismillah_trans: "In the name of Allah, the most beneficent and most Merciful.",
+                duaa_invocation: "With the blessings of Allah, we are delighted to invite you to the Nikkah & Walima ceremony of",
+                invitation_badge: "Nikkah & Walima Invitation",
+                tamil_main_heading: "Nikkah & Walima Wedding Invitation",
+                solicit_text: "Solicit the pleasure of your presence with Family & Friends on the Occasion of the Marriage of",
+                groom_name: "K. Mohamed Habish Ali <span class='text-base sm:text-xl font-sans text-gold-300 font-normal'>B.E., (ECE)</span>",
+                bride_name: "Dr. S. Kalander Ayisha Safeeka <span class='text-base sm:text-xl font-sans text-gold-300 font-normal'>B.H.M.S.</span>",
+                wedding_date: "Sunday, 17th January 2027",
+                hijri_date: "Hijri 1448, Sha'ban Pirai -08",
+                quick_venue: "Dindigul, Tamil Nadu",
+                cd_days: "Days",
+                cd_hours: "Hours",
+                cd_mins: "Mins",
+                cd_secs: "Secs",
+                btn_schedule: "Ceremony Timings",
+                btn_location: "Hall Location",
+                btn_share: "Share Invite",
+                btn_dua: "Send Dua (வாழ்த்து)",
+                ayah_english: '"And of His signs is that He created for you from yourselves mates that you may find tranquillity in them; and He placed between you affection and mercy. Indeed in that are signs for a people who give thought."',
+                ayah_tamil: '"And He created for you mates that you may dwell in tranquility with them." - Surah Ar-Rum 30:21',
+                lineage_subtitle: "With Honor & Humility",
+                lineage_title: "Bride & Groom Lineage Details",
+                groom_label: "The Groom • மணமகன்",
+                groom_card_name: "K. Mohamed Habish Ali B.E., (ECE)",
+                groom_parents_heading: "Parents",
+                groom_parents_names: "Janab M.A. Kadhar Mydeen & Janaba K. Narges Banu (Madurai)",
+                bride_label: "The Bride • மணமகள்",
+                bride_card_name: "Dr. S. Kalander Ayisha Safeeka B.H.M.S.",
+                bride_parents_heading: "Parents",
+                bride_parents_names: "Haji Dr. H. Mohamed Kasim M.Sc., Ph.D., D.Sc., & Janaba M. Irfana Parveen (Dindigul)",
+                program_subtitle: "Auspicious Schedule",
+                program_title: "Ceremony & Reception Program",
+                nikkah_badge: "Sacred Nikkah Ceremony",
+                nikkah_name: "Insha Allah Nikkah Ceremony",
+                nikkah_time: "Sunday, 17th January 2027 • Morning 11:00 AM to 12:30 PM",
+                nikkah_desc: "Solemnized in accordance with Islamic Law, enshrouded by the Quran and Sunnah, with agreed Mehr in the presence of witnesses.",
+                walima_badge: "Walima Feast Celebration",
+                walima_name: "Walima Feast (வலிமா விருந்து)",
+                walima_time: "Sunday, 17th January 2027 • 12:45 PM Onwards",
+                walima_desc: "Cordially invite you to join the grand traditional wedding banquet feast and bless the couple.",
+                venue_subtitle: "Celebration Venue",
+                venue_title: "Venue & Route Guide",
+                hall_name: "Sathankudi Sathriya Nadargal Uravinmurai Meeting Hall",
+                hall_tamil_name: "Yanaitheppam, Dindigul",
+                hall_landmark: "Opp. Begampur Big Mosque, Near Yanaitheppam, Dindigul, Tamil Nadu.",
+                hall_guide: "Easily accessible from Dindigul railway station and bus terminus.",
+                btn_copy_addr: "Copy Address",
+                qr_header: "Scan for Location",
+                qr_subtext: "Yanaitheppam, Begampur, Dindigul",
+                dua_subtitle: "Your Duas & Wishes",
+                dua_title: "Live Duas & Blessings Wall",
+                form_heading: "Send Your Duas to the Couple",
+                form_subheading: "Submit your prayers for Mohamed Habish Ali & Dr. Kalander Ayisha Safeeka",
+                form_name_label: "Your Name *",
+                form_city_label: "City / Native",
+                form_dua_label: "Your Dua Message *",
+                btn_submit_dua: "Submit Dua",
+                feed_heading: "Recent Duas & Prayers"
+            },
+            ta: {
+                langButtonLabel: "Switch to English",
+                bismillah_trans: "பிஸ்மில்லா ஹிர்ரஹ்மானிர் ரஹீம்",
+                duaa_invocation: "எல்லாம் வல்ல அல்லாஹ்வின் திருப்பெயரால் நிக்காஹ் மற்றும் வலிமா வைபவத்திற்கு அன்புடன் அழைக்கின்றோம்",
+                invitation_badge: "நிக்காஹ் மற்றும் வலிமா அழைப்பிதழ்",
+                tamil_main_heading: "நிக்காஹ் மற்றும் வலிமா அழைப்பிதழ்",
+                solicit_text: "அல்லாஹ்வின் பேரருளாலும், நபிகள் நாயகம் ஸல் அவர்களின் துஆ பரக்கத்தாலும் நடைபெறும் திருமண அழைப்பு",
+                groom_name: "கா. முகமது ஹாபிஸ் அலி <span class='text-base sm:text-xl font-tamil text-gold-300 font-normal'>B.E., (ECE)</span>",
+                bride_name: "Dr. ச. கலந்தர் ஆயிஷா சஃபீக்கா <span class='text-base sm:text-xl font-tamil text-gold-300 font-normal'>B.H.M.S.</span>",
+                wedding_date: "ஞாயிற்றுக்கிழமை, 17 ஜனவரி 2027",
+                hijri_date: "ஹிஜ்ரி 1448, ஷாஃபான் மாதம் பிறை 08",
+                quick_venue: "திண்டுக்கல், தமிழ்நாடு",
+                cd_days: "நாட்கள்",
+                cd_hours: "மணி",
+                cd_mins: "நிமிடம்",
+                cd_secs: "விநாடி",
+                btn_schedule: "நிகழ்ச்சி நேரம்",
+                btn_location: "மண்டப முகவரி",
+                btn_share: "அழைப்பை பகிர்க",
+                btn_dua: "துஆ & நல்வாழ்த்து",
+                ayah_english: '"And of His signs is that He created for you from yourselves mates that you may find tranquillity in them; and He placed between you affection and mercy. Indeed in that are signs for a people who give thought." [Al Rum: 21]',
+                ayah_tamil: "அல்லாஹ்வும் சல்லி அலா முஹம்மதின் வஆலிஹி வசல்லம் நிறைவான வாழ்வை தந்து நிலையாக வாழ வைக்கும் மறையளித்த எங்கள் இறைவா! இம்மணமக்களை மகிழ்வோடும் நிறைவாக வாழ வைப்பாயாக! - ஆமீன்.",
+                lineage_subtitle: "பாரம்பரிய நற்குடும்ப விபரம்",
+                lineage_title: "மணமக்கள் மற்றும் குடும்ப விபரங்கள்",
+                groom_label: "தீன்குலச்செல்வன் • மணமகன்",
+                groom_card_name: "கா. முகமது ஹாபிஸ் அலி B.E., (ECE)",
+                groom_parents_heading: "பெற்றோர்",
+                groom_parents_names: "ஜனாப். M.A. காதர் மைதீன் - ஜனாபா. K. நர்கீஸ் பானு (மதுரை)",
+                bride_label: "தீன்குலச்செல்வி • மணமகள்",
+                bride_card_name: "Dr. ச. கலந்தர் ஆயிஷா சஃபீக்கா B.H.M.S.",
+                bride_parents_heading: "பெற்றோர்",
+                bride_parents_names: "ஹாஜி. டாக்டர் ஹெச். முகமது காசிம் M.Sc., Ph.D., D.Sc., - M. இர்பானா ஃபர்வீன் (திண்டுக்கல்)",
+                program_subtitle: "சுபவேளைகள்",
+                program_title: "நிகழ்ச்சி நிரல் மற்றும் வலிமா விருந்து",
+                nikkah_badge: "இன்ஷா அல்லாஹ் நிக்காஹ்",
+                nikkah_name: "முபாரக்கான நிக்காஹ் வைபவம்",
+                nikkah_time: "17 ஜனவரி 2027 • காலை 11.00 மணிக்குமேல் 12.30 மணிக்குள்",
+                nikkah_desc: "பெரியோர்களால் நிச்சயிக்கப்பட்டு குர்ஆன் மற்றும் சுன்னத் முறைப்படி நிக்காஹ் திருநிறைவு பெறும்.",
+                walima_badge: "சுவையான வலிமா விருந்து",
+                walima_name: "வலிமா விருந்து உபசரிப்பு",
+                walima_time: "17 ஜனவரி 2027 • மதியம் 12.45 மணி முதல்",
+                walima_desc: "தாங்கள் தங்கள் சுற்றமும் நட்பும் சூழ வருகை தந்து மணமக்களை ஹக்கில் துஆ செய்து வலிமா விருந்திலும் கலந்து கொள்ளுமாறு அன்புடன் அழைக்கின்றோம்.",
+                venue_subtitle: "திருமண மண்டபம்",
+                venue_title: "மண்டப அமைவிடம் மற்றும் வழிகாட்டி",
+                hall_name: "சாத்தங்குடி சத்ரிய நாடார்கள் உறவின் முறை மீட்டிங் ஹால்",
+                hall_tamil_name: "யானைத்தெப்பம், திண்டுக்கல்",
+                hall_landmark: "திண்டுக்கல் - பேகம்பூர் பெரிய பள்ளிவாசல் எதிரில், யானைத்தெப்பம் அருகில்.",
+                hall_guide: "வாகன வசதி மற்றும் பேருந்து நிலையத்திலிருந்து எளிதில் அணுகும் வசதி கொண்டது.",
+                btn_copy_addr: "முகவரி நகலெடு",
+                qr_header: "வழிகாட்டி மேப் QR குறியீடு",
+                qr_subtext: "பேகம்பூர் பெரிய பள்ளிவாசல் எதிரில், திண்டுக்கல்",
+                dua_subtitle: "உங்கள் பிரார்த்தனைகள்",
+                dua_title: "துஆ மற்றும் நல்வாழ்த்துப் பதிவுகள்",
+                form_heading: "மணமக்களுக்கு துஆ செய்யுங்கள்",
+                form_subheading: "ஹாபிஸ் அலி & டாக்டர் ஆயிஷா சஃபீக்கா ஆகியோருக்கு உங்கள் ஆசீர்வாதங்களை பதிவிடவும்",
+                form_name_label: "உங்கள் பெயர் *",
+                form_city_label: "ஊர்",
+                form_dua_label: "துஆ செய்தி *",
+                btn_submit_dua: "துஆவை சமர்ப்பிக்கவும்",
+                feed_heading: "பதிவான துஆக்கள்"
+            }
+        };
+
+        function renderLineage() {
+            const groomBlock = document.getElementById("groomLineageBlock");
+            const brideBlock = document.getElementById("brideLineageBlock");
+            if (!groomBlock || !brideBlock) return;
+
+            if (currentLang === 'ta') {
+                groomBlock.innerHTML = `
+                    <div class="p-3 bg-emerald-50/70 rounded-xl border border-emerald-100">
+                        <span class="text-[11px] font-bold text-emerald-900 block mb-0.5">மகன்வழிப் பேரன்:</span>
+                        <p class="text-xs text-neutral-700">மதுரை, (மர்ஹூம்) P.M. காஜா மைதீன் - (மர்ஹூமா) K. ஜெய்த்தூன் பீவி அவர்களின் மகன்வழிப் பேரனும்,</p>
+                    </div>
+                    <div class="p-3 bg-emerald-50/70 rounded-xl border border-emerald-100">
+                        <span class="text-[11px] font-bold text-emerald-900 block mb-0.5">மகள்வழிப் பேரன்:</span>
+                        <p class="text-xs text-neutral-700">பாளையங்கோட்டூர், (மர்ஹூம்) ஹாஜி. K. முகம்மது அலியார் ஆலிம் - (மர்ஹூமா) M.A. கதீஜா பீவி அவர்களின் மகள்வழிப் பேரனும்,</p>
+                    </div>
+                    <div class="p-3 bg-gold-50/60 rounded-xl border border-gold-200">
+                        <p class="text-xs text-neutral-800">
+                            <strong>M.A. காதர்மைதீன் - K. நர்கீஸ்பானு</strong> அவர்களின் மகனுமாகிய தீன்குலச்செல்வன் <b class="text-emerald-950 font-bold">கா. முகமது ஹாபிஸ் அலி B.E., (ECE)</b>.
+                        </p>
+                    </div>
+                `;
+
+                brideBlock.innerHTML = `
+                    <div class="p-3 bg-gold-50/70 rounded-xl border border-gold-200">
+                        <span class="text-[11px] font-bold text-emerald-900 block mb-0.5">பேத்தி:</span>
+                        <p class="text-xs text-neutral-700">தொண்டி, கொழும்பு வீடு (மர்ஹூம்) ஜனாப். K.M.P.M. முஹைதீன் பிச்சை மற்றும் தொம்பை வீடு (மர்ஹூம்) ஜனாப். A. அப்துல் கரீம் ஆகியோரின் அன்புப் பேத்தியும்,</p>
+                    </div>
+                    <div class="p-3 bg-gold-50/70 rounded-xl border border-gold-200">
+                        <span class="text-[11px] font-bold text-emerald-900 block mb-0.5">அன்பு மகள்:</span>
+                        <p class="text-xs text-neutral-700">(மர்ஹூம்) ஜனாப். A. ஷேக் நைனா முகமது அவர்களின் அன்பு மகளும்,</p>
+                    </div>
+                    <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-200">
+                        <p class="text-xs text-neutral-800">
+                            <strong>ஹாஜி. டாக்டர் ஹெச். முகமது காசிம் M.Sc., Ph.D., D.Sc., - M. இர்பானா ஃபர்வீன்</strong> அவர்களின் புதல்வியுமான தீன்குலச்செல்வி <b class="text-emerald-950 font-bold">Dr. ச. கலந்தர் ஆயிஷா சஃபீக்கா B.H.M.S.</b>.
+                        </p>
+                    </div>
+                `;
+            } else {
+                groomBlock.innerHTML = `
+                    <div class="p-3 bg-emerald-50/70 rounded-xl border border-emerald-100">
+                        <span class="text-[11px] font-bold text-emerald-900 block mb-0.5">Paternal Grandson of:</span>
+                        <p class="text-xs text-neutral-700">Madurai, (Late) P.M. Kadhar Mydeen &amp; (Late) K. Jaithun Beevi</p>
+                    </div>
+                    <div class="p-3 bg-emerald-50/70 rounded-xl border border-emerald-100">
+                        <span class="text-[11px] font-bold text-emerald-900 block mb-0.5">Maternal Grandson of:</span>
+                        <p class="text-xs text-neutral-700">Palaiyankottur, (Late) Haji. K. Mohamed Aliyar Alim &amp; (Late) M.A. Katheeja Beevi</p>
+                    </div>
+                    <div class="p-3 bg-gold-50/60 rounded-xl border border-gold-200">
+                        <p class="text-xs text-neutral-800">
+                            Beloved Son of <strong>Janab M.A. Kadhar Mydeen &amp; Janaba K. Narges Banu</strong> (Madurai).
+                        </p>
+                    </div>
+                `;
+
+                brideBlock.innerHTML = `
+                    <div class="p-3 bg-gold-50/70 rounded-xl border border-gold-200">
+                        <span class="text-[11px] font-bold text-emerald-900 block mb-0.5">Beloved Granddaughter of:</span>
+                        <p class="text-xs text-neutral-700">Thondi, Colombo Veedu (Late) Janab K.M.P.M. Muhaideen Pitchai &amp; Thombaiveedu (Late) Janab A. Abdul Kareem</p>
+                    </div>
+                    <div class="p-3 bg-gold-50/70 rounded-xl border border-gold-200">
+                        <span class="text-[11px] font-bold text-emerald-900 block mb-0.5">Beloved Daughter of:</span>
+                        <p class="text-xs text-neutral-700">(Late) Janab A. Sheik Naina Mohamed</p>
+                    </div>
+                    <div class="p-3 bg-emerald-50/60 rounded-xl border border-emerald-200">
+                        <p class="text-xs text-neutral-800">
+                            Precious Daughter of <strong>Haji Dr. H. Mohamed Kasim M.Sc., Ph.D., D.Sc., &amp; Janaba M. Irfana Parveen</strong> (Dindigul).
+                        </p>
+                    </div>
+                `;
+            }
+        }
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            const dict = translations[lang];
+
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (dict && dict[key] !== undefined) {
+                    el.innerHTML = dict[key];
+                }
+            });
+
+            const langBtn = document.getElementById("langButtonLabel");
+            if (langBtn) langBtn.innerText = dict.langButtonLabel;
+            renderLineage();
+        }
+
+        function toggleLanguage() {
+            const nextLang = currentLang === 'ta' ? 'en' : 'ta';
+            applyLanguage(nextLang);
+            showToast(nextLang === 'ta' ? 'தமிழ் வடிவத்திற்கு மாற்றப்பட்டது' : 'Switched to English');
+        }
+
+        /* -------------------------------------------------------------
+           2. COUNTDOWN TIMER (17 JAN 2027 11:00 AM IST)
+           ------------------------------------------------------------- */
+        const weddingTimestamp = new Date("2027-01-17T11:00:00+05:30").getTime();
+
+        function updateCountdown() {
+            const now = Date.now();
+            const diff = weddingTimestamp - now;
+
+            const daysEl = document.getElementById("days");
+            const hoursEl = document.getElementById("hours");
+            const minsEl = document.getElementById("minutes");
+            const secsEl = document.getElementById("seconds");
+
+            if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+
+            if (diff <= 0) {
+                daysEl.innerText = "00";
+                hoursEl.innerText = "00";
+                minsEl.innerText = "00";
+                secsEl.innerText = "00";
+                return;
+            }
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            daysEl.innerText = d < 10 ? '0' + d : d;
+            hoursEl.innerText = h < 10 ? '0' + h : h;
+            minsEl.innerText = m < 10 ? '0' + m : m;
+            secsEl.innerText = s < 10 ? '0' + s : s;
+        }
+
+        /* -------------------------------------------------------------
+           3. SPARKLES & PETALS CANVAS
+           ------------------------------------------------------------- */
+        const canvas = document.getElementById("sparkle-canvas");
+        const ctx = canvas ? canvas.getContext("2d") : null;
+        let particles = [];
+
+        function resizeCanvas() {
+            if (!canvas) return;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset(true);
+            }
+            reset(initial = false) {
+                this.x = Math.random() * (canvas ? canvas.width : 400);
+                this.y = initial ? Math.random() * (canvas ? canvas.height : 800) : -20;
+                this.size = Math.random() * 5 + 3;
+                this.speedY = Math.random() * 1.2 + 0.6;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.rotation = Math.random() * 360;
+                this.rotSpeed = Math.random() * 1.5 - 0.75;
+                this.opacity = Math.random() * 0.6 + 0.3;
+                this.isGold = Math.random() > 0.5;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.y * 0.01) * 0.5;
+                this.rotation += this.rotSpeed;
+
+                if (canvas && this.y > canvas.height + 20) {
+                    this.reset(false);
+                }
+            }
+            draw() {
+                if (!ctx) return;
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.globalAlpha = this.opacity;
+
+                if (this.isGold) {
+                    ctx.fillStyle = "#dfbc53";
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.size / 2.5, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    ctx.fillStyle = "#fcfaf2";
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, this.size, this.size / 2, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
+
+        if (canvas) {
+            for (let i = 0; i < 35; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            if (ctx && canvas) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        /* -------------------------------------------------------------
+           4. ISLAMIC AMBIENT SUFI BGM (Web Audio API)
+           ------------------------------------------------------------- */
+        let audioCtx = null;
+        let isAudioPlaying = false;
+        let melodyTimer = null;
+        let droneOsc1 = null, droneOsc2 = null, droneGain = null;
+
+        const sufiMelodyNotes = [
+            293.66, 311.13, 369.99, 392.00, 369.99, 311.13, 293.66, 0,
+            369.99, 392.00, 440.00, 466.16, 440.00, 392.00, 369.99, 0,
+            440.00, 466.16, 523.25, 587.33, 523.25, 466.16, 440.00, 392.00,
+            369.99, 392.00, 369.99, 311.13, 293.66, 293.66, 0, 0
+        ];
+        let melodyStep = 0;
+
+        function startDrone() {
+            if (!audioCtx) return;
+            droneGain = audioCtx.createGain();
+            droneGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+            droneGain.gain.exponentialRampToValueAtTime(0.03, audioCtx.currentTime + 2);
+
+            droneOsc1 = audioCtx.createOscillator();
+            droneOsc2 = audioCtx.createOscillator();
+            droneOsc1.type = 'sine';
+            droneOsc1.frequency.setValueAtTime(146.83, audioCtx.currentTime);
+            droneOsc2.type = 'triangle';
+            droneOsc2.frequency.setValueAtTime(220.00, audioCtx.currentTime);
+
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = "lowpass";
+            filter.frequency.setValueAtTime(450, audioCtx.currentTime);
+
+            droneOsc1.connect(filter);
+            droneOsc2.connect(filter);
+            filter.connect(droneGain);
+            droneGain.connect(audioCtx.destination);
+
+            droneOsc1.start();
+            droneOsc2.start();
+        }
+
+        function stopDrone() {
+            if (droneGain && audioCtx) {
+                try {
+                    droneGain.gain.setValueAtTime(droneGain.gain.value, audioCtx.currentTime);
+                    droneGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.8);
+                    setTimeout(() => {
+                        if (droneOsc1) { droneOsc1.stop(); droneOsc1.disconnect(); droneOsc1 = null; }
+                        if (droneOsc2) { droneOsc2.stop(); droneOsc2.disconnect(); droneOsc2 = null; }
+                    }, 900);
+                } catch(e) {}
+            }
+        }
+
+        function playNeyFlute(freq, duration = 1.8) {
+            if (!audioCtx || freq <= 0) return;
+            try {
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                const vibrato = audioCtx.createOscillator();
+                const vibratoGain = audioCtx.createGain();
+                vibrato.frequency.setValueAtTime(4.8, now);
+                vibratoGain.gain.setValueAtTime(2.2, now);
+                vibrato.connect(osc.frequency);
+                vibrato.start(now);
+                vibrato.stop(now + duration);
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, now);
+
+                gain.gain.setValueAtTime(0.0001, now);
+                gain.gain.exponentialRampToValueAtTime(0.065, now + 0.3);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start(now);
+                osc.stop(now + duration);
+            } catch (e) {}
+        }
+
+        async function toggleAudio() {
+            try {
+                if (!audioCtx) {
+                    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                    audioCtx = new AudioContextClass();
+                }
+                if (audioCtx.state === 'suspended') {
+                    await audioCtx.resume();
+                }
+
+                isAudioPlaying = !isAudioPlaying;
+                const status = document.getElementById("audioStatusText");
+                const pingWave = document.getElementById("pingWave");
+
+                if (isAudioPlaying) {
+                    if (status) status.innerText = currentLang === 'ta' ? "இசை (Pause)" : "BGM (Pause)";
+                    if (pingWave) pingWave.classList.remove("hidden");
+                    startDrone();
+
+                    playNeyFlute(sufiMelodyNotes[0], 2.0);
+                    melodyStep = 1;
+
+                    melodyTimer = setInterval(() => {
+                        const note = sufiMelodyNotes[melodyStep % sufiMelodyNotes.length];
+                        if (note > 0) playNeyFlute(note, 1.8);
+                        melodyStep++;
+                    }, 1100);
+
+                    showToast(currentLang === 'ta' ? "மங்கல நஷீத் இசை ஒலிக்கிறது..." : "Playing Islamic Ambient Melody...");
+                } else {
+                    if (status) status.innerText = currentLang === 'ta' ? "இசை (Play)" : "BGM (Play)";
+                    if (pingWave) pingWave.classList.add("hidden");
+                    if (melodyTimer) clearInterval(melodyTimer);
+                    stopDrone();
+                }
+            } catch (err) {
+                console.error("Audio error:", err);
+            }
+        }
+
+        /* -------------------------------------------------------------
+           5. DUA & BLESSINGS WALL (LocalStorage supported)
+           ------------------------------------------------------------- */
+        const initialDuas = [
+            {
+                name: "A. Mohamed Imran",
+                city: "Madurai",
+                date: "Yesterday",
+                message: "பாரக்கல்லாஹு லகுமா வபாரக்க அலைகுமா... May Allah bless your new journey with endless joy, barakah, and piety!"
+            }
+        ];
+
+        function loadDuas() {
+            const saved = localStorage.getItem("wedding_duas_habish_ayisha");
+            if (saved) {
+                try {
+                    return JSON.parse(saved);
+                } catch (e) {
+                    return initialDuas;
+                }
+            }
+            return initialDuas;
+        }
+
+        function renderDuas() {
+            const list = loadDuas();
+            const container = document.getElementById("duasFeed");
+            const badge = document.getElementById("duaCounterBadge");
+            if (badge) badge.innerText = `${list.length} Duas`;
+
+            if (container) {
+                container.innerHTML = list.map(item => `
+                    <div class="card-ivory p-4 rounded-2xl shadow-sm border border-gold-200">
+                        <div class="flex items-center justify-between mb-1">
+                            <div>
+                                <span class="font-bold text-xs sm:text-sm text-emerald-950">${escapeHtml(item.name || 'Well-wisher')}</span>
+                                ${item.city ? `<span class="text-[11px] text-neutral-500 ml-1.5 font-medium">(${escapeHtml(item.city)})</span>` : ''}
+                            </div>
+                            <span class="text-[10px] text-neutral-400 font-sans">${escapeHtml(item.date || '')}</span>
+                        </div>
+                        <p class="text-xs text-neutral-700 leading-relaxed font-serif italic mt-1">
+                            "${escapeHtml(item.message || '')}"
+                        </p>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function handleDuaSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById("senderName").value.trim();
+            const city = document.getElementById("senderCity").value.trim();
+            const msg = document.getElementById("senderMsg").value.trim();
+
+            if (!name || !msg) return;
+
+            const newDua = {
+                name: name,
+                city: city,
+                date: "Just now",
+                message: msg
+            };
+
+            const existing = loadDuas();
+            existing.unshift(newDua);
+            localStorage.setItem("wedding_duas_habish_ayisha", JSON.stringify(existing));
+
+            renderDuas();
+            document.getElementById("duaForm").reset();
+            showToast("உங்கள் துஆ பதிவு செய்யப்பட்டது! ஜசாக்கல்லாஹ் ஹைர்.");
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        /* -------------------------------------------------------------
+           6. COPY ADDRESS & TOAST
+           ------------------------------------------------------------- */
+        function copyAddress() {
+            const addr = "Sathankudi Sathriya Nadargal Uravinmurai Meeting Hall, Opp. Begampur Big Mosque, Yanaitheppam, Dindigul, Tamil Nadu 624002";
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(addr).then(() => {
+                    showToast("மண்டப முகவரி நகலெடுக்கப்பட்டது (Copied)!");
+                }).catch(() => fallbackCopy(addr));
+            } else {
+                fallbackCopy(addr);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const temp = document.createElement("input");
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            showToast("மண்டப முகவரி நகலெடுக்கப்பட்டது (Copied)!");
+        }
+
+        function showToast(text) {
+            const toast = document.getElementById("toast");
+            const toastMsg = document.getElementById("toastMsg");
+            if (!toast || !toastMsg) return;
+
+            toastMsg.innerText = text;
+            toast.classList.remove("translate-y-24", "opacity-0");
+            toast.classList.add("translate-y-0", "opacity-100");
+
+            setTimeout(() => {
+                toast.classList.add("translate-y-24", "opacity-0");
+                toast.classList.remove("translate-y-0", "opacity-100");
+            }, 3000);
+        }
+
+        /* -------------------------------------------------------------
+           7. WHATSAPP SHARE INVITATION
+           ------------------------------------------------------------- */
+        function shareOnWhatsApp() {
+            const currentUrl = window.location.href;
+            const text = encodeURIComponent(
+                `💐 *திருமண அழைப்பிதழ் / Nikkah & Walima Invitation* 💐\n\n` +
+                `*மணமக்கள்:*\n` +
+                `🤵 *K. Mohamed Habish Ali B.E., (ECE)*\n` +
+                `👰 *Dr. S. Kalander Ayisha Safeeka B.H.M.S.*\n\n` +
+                `📅 *தேதி:* ஞாயிற்றுக்கிழமை, 17 ஜனவரி 2027 (Hijri 1448, Sha'ban Pirai 08)\n` +
+                `⏰ *நிக்காஹ்:* காலை 11:00 AM - 12:30 PM\n` +
+                `🍛 *வலிமா விருந்து:* மதியம் 12:45 PM முதல்\n` +
+                `📍 *இடம்:* சாத்தங்குடி சத்ரிய நாடார்கள் உறவின் முறை மீட்டிங் ஹால் (யானைத்தெப்பம், திண்டுக்கல்)\n` +
+                `🗺️ *Google Maps:* https://www.google.com/maps/place/Sathangudi+Saanar+Marriage+Hall/@10.3570452,77.9674917,17z\n\n` +
+                `தாங்கள் குடும்பத்துடன் வருகை தந்து மணமக்களை வாழ்த்த அன்புடன் அழைக்கிறோம்!\n\n` +
+                `டிஜிட்டல் அழைப்பிதழை பார்க்க: ${currentUrl}`
+            );
+            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+        }
+
+        // DOM Load & Startup
+        document.addEventListener("DOMContentLoaded", () => {
+            applyLanguage('ta');
+            renderDuas();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+</body>
+</html>
